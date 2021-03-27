@@ -1,0 +1,80 @@
+{
+	"name": "solovar",
+	"version": "0.1.0",
+	"license": "SEE LICENSE IN LICENSE",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:robrohan/solovar.git"
+	},
+	"author": {
+		"name": "Rob Rohan",
+		"email": "rob@therohans.com",
+		"url": "https://robrohan.com"
+	},
+	"scripts": {
+    "build:demo": "npx esbuild src/demo.ts --bundle --outfile=dist/demo.js --minify --define:process.env.NODE_ENV=\"'production'\"",
+		"build:core": "npx esbuild src/main.ts --bundle --outfile=dist/solovar.js --minify --define:process.env.NODE_ENV=\"'production'\"",
+		"build:s": "tsc",
+    "build": "npm run build:s&& npm run build:core &&npm run build:demo",
+    "start:demo": "npx esbuild src/demo.ts --bundle --outfile=dist/demo.js --sourcemap --define:process.env.NODE_ENV=\"'development'\"",
+    "start:core": "npx esbuild src/main.ts --bundle --outfile=dist/solovar.js --sourcemap --define:process.env.NODE_ENV=\"'development'\"",
+		"start": "npm run start:demo&& npm run start:core",
+		"test": "set NODE_ENV=test &&jest ./src --no-cache --passWithNoTests",
+		"test:coverage": "jest --coverage --passWithNoTests"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/jest": "23.3.14",
+		"@types/node": "13.13.2",
+		"eslint": "5.16.0",
+		"eslint-config-google": "0.13.0",
+		"jest": "25.4.0",
+		"ts-jest": "^26.5.4",
+		"typescript": "3.7.4",
+		"esbuild": "^0.10.1"
+	},
+	"module": "es6",
+	"eslintConfig": {
+		"extends": "google",
+		"parserOptions": {
+			"ecmaVersion": 2017
+		},
+		"env": {
+			"es6": true
+		},
+		"overrides": [
+			{
+				"files": [
+					"src/*.ts"
+				],
+				"excludedFiles": "*.test.ts"
+			}
+		],
+		"rules": {
+			"require-jsdoc": "off"
+		}
+	},
+	"jest": {
+		"preset": "ts-jest",
+		"verbose": false,
+		"testMatch": [
+			"**/?(*.)+(spec|test).+(ts|tsx|js)"
+		],
+		"moduleNameMapper": {
+			"\\.(glsl)$": "<rootDir>/__mocks__/glslMock.ts"
+		},
+		"coverageDirectory": "<rootDir>/coverage",
+		"coverageReporters": [
+			"html",
+			"text",
+			"text-summary"
+		],
+		"globals": {
+			"ts-jest": {
+				"diagnostics": {
+					"ignoreCodes": "TS2307"
+				}
+			}
+		}
+	}
+}

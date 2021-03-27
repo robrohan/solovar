@@ -1,0 +1,15 @@
+/* TEAM */
+Lead Engineer: Rob Rohan
+Site: http://robrohan.com
+Twitter: @robrohan
+Location: New Zealand
+
+/* THANKS */
+
+/* SITE */
+Last update: 2021/03
+Standards: HTML5, CSS3, WebGl
+
+/* LICENSE */
+
+Solovar Copyright (c) 2021 Rob Rohan, All Rights Reserved
