@@ -1,4 +1,3 @@
-
-export class Test {
-  id: number;
-}
+export * from 'solorvar';
+export * from 'interfaces';
+export * from 'widgets';
