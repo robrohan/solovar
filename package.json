@@ -15,7 +15,7 @@
     "build:demo": "npx esbuild src/demo.ts --bundle --outfile=dist/demo.js --minify --define:process.env.NODE_ENV=\"'production'\"",
 		"build:core": "npx esbuild src/main.ts --bundle --outfile=dist/solovar.js --minify --define:process.env.NODE_ENV=\"'production'\"",
 		"build:s": "tsc",
-    "build": "npm run build:s&& npm run build:core &&npm run build:demo",
+    "build": "npm run build:core &&npm run build:demo",
     "start:demo": "npx esbuild src/demo.ts --bundle --outfile=dist/demo.js --sourcemap --define:process.env.NODE_ENV=\"'development'\"",
     "start:core": "npx esbuild src/main.ts --bundle --outfile=dist/solovar.js --sourcemap --define:process.env.NODE_ENV=\"'development'\"",
 		"start": "npm run start:demo&& npm run start:core",
