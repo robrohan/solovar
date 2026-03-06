@@ -26,7 +26,8 @@ function makeCtx(overrides?: Partial<UIContext>): UIContext {
   } as UIContext;
 }
 
-// ─── toColor ────────────────────────────────────────────────────────────────
+///////////////////////////
+// toColor
 
 describe('toColor', () => {
   it('converts a Vec4 to an rgba string', () => {
@@ -45,7 +46,8 @@ describe('toColor', () => {
   });
 });
 
-// ─── isInside ───────────────────────────────────────────────────────────────
+///////////////////////////
+// isInside
 
 describe('isInside', () => {
   // rect: x=10, y=10, w=100, h=50  →  right edge=110, bottom edge=60
@@ -98,7 +100,8 @@ describe('isInside', () => {
   });
 });
 
-// ─── solovarStart / solovarEnd ───────────────────────────────────────────────
+///////////////////////////
+// solovarStart / solovarEnd
 
 describe('solovarStart', () => {
   it('resets cursor to default', () => {
@@ -123,7 +126,8 @@ describe('solovarEnd', () => {
   });
 });
 
-// ─── widgetRect ─────────────────────────────────────────────────────────────
+///////////////////////////
+// widgetRect
 
 describe('widgetRect', () => {
   const rect: Vec4 = [10, 10, 100, 50];
@@ -198,7 +202,9 @@ describe('widgetRect', () => {
   });
 });
 
-// ─── widgetLabel ────────────────────────────────────────────────────────────
+
+///////////////////////////
+// widgetLabel
 
 describe('widgetLabel', () => {
   const rect: Vec4 = [10, 10, 100, 50];
