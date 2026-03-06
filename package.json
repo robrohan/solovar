@@ -19,18 +19,20 @@
 		"start:demo": "npx esbuild src/demo.ts --bundle --outfile=dist/demo.js --sourcemap --define:process.env.NODE_ENV=\"'development'\"",
 		"start:core": "npx esbuild src/main.ts --bundle --outfile=dist/solovar.js --sourcemap --define:process.env.NODE_ENV=\"'development'\"",
 		"start": "npm run start:demo&& npm run start:core",
-		"test": "set NODE_ENV=test &&jest ./src --no-cache --passWithNoTests",
+		"test": "jest ./src --no-cache --passWithNoTests",
 		"test:coverage": "jest --coverage --passWithNoTests"
 	},
 	"devDependencies": {
-		"@types/jest": "23.3.14",
+		"@types/jest": "^29.5.0",
 		"@types/node": "13.13.2",
 		"esbuild": "^0.27.3",
 		"eslint": "^10.0.2",
 		"eslint-config-google": "0.13.0",
-		"jest": "^30.2.0",
-		"ts-jest": "^26.5.4",
-		"typescript": "3.7.4"
+		"jest": "^29.7.0",
+		"jest-canvas-mock": "^2.5.0",
+		"jest-environment-jsdom": "^29.7.0",
+		"ts-jest": "^29.4.0",
+		"typescript": "^5.4.0"
 	},
 	"module": "es6",
 	"eslintConfig": {
@@ -55,25 +57,29 @@
 	},
 	"jest": {
 		"preset": "ts-jest",
+		"testEnvironment": "jest-environment-jsdom",
 		"verbose": false,
 		"testMatch": [
 			"**/?(*.)+(spec|test).+(ts|tsx|js)"
 		],
-		"moduleNameMapper": {
-			"\\.(glsl)$": "<rootDir>/__mocks__/glslMock.ts"
-		},
+		"modulePaths": [
+			"<rootDir>/src"
+		],
+		"setupFiles": [
+			"jest-canvas-mock"
+		],
 		"coverageDirectory": "<rootDir>/coverage",
 		"coverageReporters": [
 			"html",
 			"text",
 			"text-summary"
 		],
-		"globals": {
-			"ts-jest": {
+		"transform": {
+			"^.+\\.tsx?$": ["ts-jest", {
 				"diagnostics": {
-					"ignoreCodes": "TS2307"
+					"ignoreCodes": ["TS2307"]
 				}
-			}
+			}]
 		}
 	}
 }
