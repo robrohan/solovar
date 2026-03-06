@@ -20,10 +20,11 @@ export function solovarInit(selector: string, render: RenderFn): UIContext {
   ctx.ctx = canvas.getContext("2d");
 
   document_canvas = ctx.canvas;
+  const canvas_rect = document_canvas.getBoundingClientRect();
     
   document_canvas.addEventListener("mousemove", (e) => {
-    ctx.mx = e.clientX;
-    ctx.my = e.clientY;
+    ctx.mx = e.clientX - canvas_rect.left;
+    ctx.my = e.clientY - canvas_rect.top;
   });
   document_canvas.addEventListener("mousedown", (e) => (ctx.down = true));
   document_canvas.addEventListener("mouseup", (e) => (ctx.down = false));

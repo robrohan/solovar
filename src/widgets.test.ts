@@ -50,7 +50,7 @@ describe('toColor', () => {
 // isInside
 
 describe('isInside', () => {
-  // rect: x=10, y=10, w=100, h=50  →  right edge=110, bottom edge=60
+  // rect: x=10, y=10, w=100, h=50 == right edge=110, bottom edge=60
   const rect: Vec4 = [10, 10, 100, 50];
 
   it('returns true for a point clearly inside', () => {
@@ -83,20 +83,19 @@ describe('isInside', () => {
     expect(isInside(p, rect)).toBe(true);
   });
 
-  it('returns false on the right edge (exclusive)', () => {
+  it('returns true on the right edge', () => {
     const p: Vec2 = [110, 30];
-    expect(isInside(p, rect)).toBe(false);
+    expect(isInside(p, rect)).toBe(true);
   });
 
-  it('returns false on the top edge (exclusive)', () => {
-    // isInside uses p[Y] > d[Y], so the top edge is excluded
+  it('returns true on the top edge', () => {
     const p: Vec2 = [50, 10];
-    expect(isInside(p, rect)).toBe(false);
+    expect(isInside(p, rect)).toBe(true);
   });
 
-  it('returns false on the bottom edge (exclusive)', () => {
+  it('returns true on the bottom edge', () => {
     const p: Vec2 = [50, 60];
-    expect(isInside(p, rect)).toBe(false);
+    expect(isInside(p, rect)).toBe(true);
   });
 });
 

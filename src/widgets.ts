@@ -11,9 +11,9 @@ export function toColor(v: Vec4): string {
 
 export function isInside(p: Vec2, d: Vec4) {
   return p[X] >= d[X] &&
-    p[X] < d[X] + d[W] &&
-    p[Y] > d[Y] &&
-    p[Y] < d[Y] + d[H];
+    p[X] <= d[X] + d[W] &&
+    p[Y] >= d[Y] &&
+    p[Y] <= d[Y] + d[H];
 }
 
 export function solovarStart(ctx: UIContext) {
