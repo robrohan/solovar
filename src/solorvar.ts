@@ -19,12 +19,15 @@ export function solovarInit(selector: string, render: RenderFn): UIContext {
   canvas.height = canvas.clientHeight;
   ctx.ctx = canvas.getContext("2d");
 
-  document.addEventListener("mousemove", (e) => {
+  document_canvas = ctx.canvas;
+    
+  document_canvas.addEventListener("mousemove", (e) => {
     ctx.mx = e.clientX;
     ctx.my = e.clientY;
   });
-  document.addEventListener("mousedown", (e) => (ctx.down = true));
-  document.addEventListener("mouseup", (e) => (ctx.down = false));
+  document_canvas.addEventListener("mousedown", (e) => (ctx.down = true));
+  document_canvas.addEventListener("mouseup", (e) => (ctx.down = false));
+
   // erm...
   window.addEventListener("resize", (e) => {
     // solovarInit(selector, render)
